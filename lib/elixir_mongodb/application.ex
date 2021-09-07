@@ -8,12 +8,10 @@ defmodule ElixirMongodb.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
+      # Start the endpoint when the application starts
+      ElixirMongodbWeb.Endpoint,
        # Connect MongoDB
-       ElixirMongodbWeb.Endpoint,
-       %{
-         id: Mongo,
-         start: { Mongo, :start_link, [[name: :mongo, database: "YOUR_DATABASE", username: "USERNAME", password: "PASSWORD", seeds: ["localhost:27017"]]] } 
-       }
+      { Mongo, [name: :mongo, database: "YOUR_DATABASE", username: "USERNAME", password: "PASSWORD", url: "localhost:27017"] } 
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
