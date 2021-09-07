@@ -14,11 +14,20 @@ https://itstedpark.medium.com/elixir-phoenix-with-mongodb-%EB%A1%9C-%EB%A7%8C%EB
 url 주소는 수정하면 됩니다.
 mongodb atlas srv 주소도 지원합니다.
 
+```elixir
+{ url: "localhost:27017"}
 { Mongo, [name: :mongo, database: "YOUR_DATABASE", username: "USERNAME", password: "PASSWORD", url: "localhost:27017"] }
+```
 
 ProgrammingController 에서 아래 devs 를 자신의 db 이름으로 수정 하면 됩니다.
+
+
+```elixir
 def index(conn, \_params) do
-cursor = Mongo.find_one(:mongo, "devs", %{})
+  cursor = Mongo.find_one(:mongo, "devs", %{})
+```
+
+
 
 질문은 itstedpark@gmail.com 혹은 issue 에 남겨주세요.
 
